@@ -6,7 +6,7 @@
 <title>Sambit Banerjee — Program Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>
+<style> 
   :root {
     --bg: #f3f3f3;
     --surface: #ffffff;
@@ -36,7 +36,7 @@
     pointer-events: none; z-index: 9999;
     transform: translate(-50%,-50%);
     transition: width 0.3s, height 0.3s;
-    mix-blend-mode: normal;
+    mix-blend-mode: normal; 
   }
   #cursor-ring {
     position: fixed; width: 40px; height: 40px;
@@ -120,6 +120,88 @@
   .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.26s; }
   .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.33s; }
   .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.40s; }
+  .stagger.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.47s; }
+  .stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.54s; }
+
+  /* ── PROJECTS ── */
+  #projects { background: linear-gradient(180deg, var(--bg), #ececec 45%, var(--bg)); }
+  .projects-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin: 2.5rem 0 1.25rem;
+  }
+  .projects-sub:first-of-type { margin-top: 0; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 1.5rem 1.6rem;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #151515;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s ease;
+  }
+  .project-card:hover, .project-card.tapped {
+    border-color: rgba(16,16,16,0.26);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(16,16,16,0.12);
+  }
+  .project-card:hover::before, .project-card.tapped::before { transform: scaleY(1); }
+  .project-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .project-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  .project-badge {
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(16,16,16,0.03);
+  }
+  .project-card-desc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+  .projects-grid-personal .project-card-title { font-size: 0.98rem; }
 
   /* ── RIPPLE ── */
   .ripple {
@@ -362,6 +444,7 @@
     .hero { padding: 7rem 1.5rem 3rem; }
     .hero-stats { position: static; margin-top: 3rem; justify-content: flex-start; }
     .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
     .sprint-stats { grid-template-columns: repeat(2,1fr); }
     .kanban { grid-template-columns: 1fr 1fr; }
   }
@@ -382,14 +465,16 @@
   <div class="s-dot" data-i="4"></div>
   <div class="s-dot" data-i="5"></div>
   <div class="s-dot" data-i="6"></div>
+  <div class="s-dot" data-i="7"></div>
 </div>
 
 <nav id="navbar">
   <div class="nav-logo">SB</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#dashboard">Project</a></li>
+    <li><a href="#dashboard">Sprint</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -440,6 +525,63 @@
       <div class="lang-card tappable"><div class="lang-name">Chinese</div><div class="lang-level">Full Professional · HSK 5</div><div class="lang-bar"><div class="lang-bar-fill" data-width="90"></div></div></div>
       <div class="lang-card tappable"><div class="lang-name">Hindi</div><div class="lang-level">Native / Bilingual</div><div class="lang-bar"><div class="lang-bar-fill" data-width="100"></div></div></div>
       <div class="lang-card tappable"><div class="lang-name">Bengali</div><div class="lang-level">Native</div><div class="lang-bar"><div class="lang-bar-fill" data-width="100"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Portfolio</div>
+  <h2 class="reveal">Projects</h2>
+  <p class="section-intro reveal">Systems I have shipped at work—ERP, CRM, collaboration, and automation—plus personal builds.</p>
+
+  <h3 class="projects-sub reveal">Professional</h3>
+  <div class="projects-grid stagger reveal">
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">ERPNext</div>
+        <span class="project-badge">B2B Ops</span>
+      </div>
+      <p class="project-card-desc">End-to-end ERPNext rollout for a scientific-instruments manufacturer: core modules, workflows from quote to fulfillment, and tight alignment with how the team actually works—driving strong adoption across sales and operations.</p>
+    </div>
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">CRM</div>
+        <span class="project-badge">Adoption</span>
+      </div>
+      <p class="project-card-desc">Practical CRM inside ERPNext—pipelines, ownership, and reporting—so B2B deals and customer touchpoints stay visible. Focus on training and day-to-day use, not shelf-ware.</p>
+    </div>
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">Google Workspace</div>
+        <span class="project-badge">Migration</span>
+      </div>
+      <p class="project-card-desc">Company-wide migration to Google Workspace for 15+ people—email, Drive, and shared calendars—with cutover planned for minimal disruption and clear handoffs for support.</p>
+    </div>
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">n8n automation</div>
+        <span class="project-badge">Integrations</span>
+      </div>
+      <p class="project-card-desc">Workflow automation with n8n: connecting Shopify, ERPNext, notifications, and internal tools so repetitive steps (orders, alerts, data sync) run reliably without manual copy-paste.</p>
+    </div>
+  </div>
+
+  <h3 class="projects-sub reveal">Personal</h3>
+  <div class="projects-grid projects-grid-personal stagger reveal">
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">This website</div>
+        <span class="project-badge">Live</span>
+      </div>
+      <p class="project-card-desc">Single-page portfolio: Nothing OS–inspired layout, scroll interactions, and a live sprint board fed by Notion—built to ship quickly and iterate in public.</p>
+    </div>
+    <div class="project-card tappable">
+      <div class="project-card-head">
+        <div class="project-card-title">Upcoming</div>
+        <span class="project-badge">Soon</span>
+      </div>
+      <p class="project-card-desc">More side projects in the pipeline—automation snippets, ops templates, and tooling experiments. Details will land here as each one ships.</p>
     </div>
   </div>
 </section>
@@ -631,7 +773,7 @@ document.addEventListener('mousemove', e=>{cx=e.clientX;cy=e.clientY;});
   ring.style.left=rx+'px'; ring.style.top=ry+'px';
   requestAnimationFrame(animCur);
 })();
-document.querySelectorAll('a,button,.tappable,.pill,.exp-tag,.sprint-stat').forEach(el=>{
+document.querySelectorAll('a,button,.tappable,.pill,.exp-tag,.sprint-stat,.project-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
 });
@@ -682,7 +824,7 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach
 document.querySelectorAll('.lang-bar-fill,.skill-bar-fill').forEach(b=>b.style.width='0%');
 
 // ── SECTION DOTS ─────────────────────────────────────────────────────────
-const secIds=['hero','about','experience','skills','dashboard','education','contact'];
+const secIds=['hero','about','projects','experience','skills','dashboard','education','contact'];
 const dots=document.querySelectorAll('.s-dot');
 const secObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -716,7 +858,7 @@ function addRipple(el,e){
   rip.style.cssText=`width:${size}px;height:${size}px;left:${x-size/2}px;top:${y-size/2}px`;
   el.appendChild(rip); setTimeout(()=>rip.remove(),700);
 }
-document.querySelectorAll('.btn,.tappable,.pill').forEach(el=>{
+document.querySelectorAll('.btn,.tappable,.pill,.project-card').forEach(el=>{
   ['click','touchend'].forEach(evt=>{
     el.addEventListener(evt,function(e){
       addRipple(this,e.touches?e.touches[0]:e);
